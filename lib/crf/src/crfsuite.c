@@ -136,7 +136,7 @@ void crfsuite_item_swap(crfsuite_item_t* x, crfsuite_item_t* y)
 int crfsuite_item_append_attribute(crfsuite_item_t* item, const crfsuite_attribute_t* cont)
 {
     if (item->cap_contents <= item->num_contents) {
-        item->cap_contents = (item->cap_contents + 1) * 2;
+        item->cap_contents = (item->cap_contents + 1) * 5;
         item->contents = (crfsuite_attribute_t*)realloc(
             item->contents, sizeof(crfsuite_attribute_t) * item->cap_contents);
     }
@@ -215,7 +215,7 @@ void crfsuite_instance_swap(crfsuite_instance_t* x, crfsuite_instance_t* y)
 int crfsuite_instance_append(crfsuite_instance_t* inst, const crfsuite_item_t* item, int label)
 {
     if (inst->cap_items <= inst->num_items) {
-        inst->cap_items = (inst->cap_items + 1) * 2;
+        inst->cap_items = (inst->cap_items + 1) * 5;
         inst->items = (crfsuite_item_t*)realloc(inst->items, sizeof(crfsuite_item_t) * inst->cap_items);
         inst->labels = (int*)realloc(inst->labels, sizeof(int) * inst->cap_items);
     }
@@ -284,7 +284,7 @@ int  crfsuite_data_append(crfsuite_data_t* data, const crfsuite_instance_t* inst
 {
     if (0 < inst->num_items) {
         if (data->cap_instances <= data->num_instances) {
-            data->cap_instances = (data->cap_instances + 1) * 2;
+            data->cap_instances = (data->cap_instances + 1) * 5;
             data->instances = (crfsuite_instance_t*)realloc(
                 data->instances, sizeof(crfsuite_instance_t) * data->cap_instances);
         }
